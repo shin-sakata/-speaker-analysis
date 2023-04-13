@@ -1,4 +1,4 @@
-from src.env import env
+from env import env
 import openai
 
 

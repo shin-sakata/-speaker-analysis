@@ -4,7 +4,7 @@ import os
 
 # データファイルの名前を受け取って、絶対パスを返す
 def data_path(filename: str) -> str:
-    return os.path.join(os.path.dirname(__file__), "..", "..", "data", filename)
+    return os.path.join(os.path.dirname(__file__), "..", "data", filename)
 
 
 # ファイルを読み込んで、mp3に変換してoutputに書き出す
