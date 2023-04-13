@@ -6,7 +6,6 @@
   outputs = { self, nixpkgs, flake-utils }: flake-utils.lib.eachDefaultSystem (system:
     let
       pkgs = nixpkgs.legacyPackages.${system};
-      nodejs = pkgs.nodejs-slim-18_x;
       pythonEnv = pkgs.python3.withPackages (p: [
         p.openai
         p.autopep8
@@ -17,8 +16,6 @@
     {
       devShells.default = pkgs.mkShell {
         packages = [
-          nodejs
-          (pkgs.yarn.override { inherit nodejs; })
           pythonEnv
         ];
         PYTHONPATH = "${pythonEnv}/${pythonEnv.sitePackages}";
