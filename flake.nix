@@ -6,18 +6,17 @@
   outputs = { self, nixpkgs, flake-utils }: flake-utils.lib.eachDefaultSystem (system:
     let
       pkgs = nixpkgs.legacyPackages.${system};
-      python = pkgs.callPackage ./nix/python.nix { };
+      python3 = pkgs.python3;
+      poetry = pkgs.poetry.override { inherit python3; };
     in
     {
       devShells.default = pkgs.mkShell {
         packages = [
-          (pkgs.poetry.override { python3 = python.interpreter; } )
-          python.interpreter
-          python.env
+          poetry
+          python3
           pkgs.ffmpeg
         ];
-        PYTHONPATH = "${python.env}/${python.env.sitePackages}";
-        POETORY_LOCK_HASH=python.poetryLockHash;
+        PYTHONPATH = "${python3}/${python3.sitePackages}";
       };
     }
   );
