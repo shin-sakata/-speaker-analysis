@@ -1,10 +1,4 @@
-from openai_client import openai_client
+from src.data import to_mp3
 
-result = openai_client.ChatCompletion.create(
-    model="gpt-3.5-turbo",
-    messages=[
-        {"role": "user", "content": "Hello, ChatGPT!"}
-    ]
-)
 
-print(result.choices[0].message)  # type: ignore
+to_mp3("data.mp4", "data.mp3")

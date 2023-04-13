@@ -11,6 +11,7 @@
         p.openai
         p.autopep8
         p.pydantic
+        p.ffmpeg-python
       ]);
     in
     {
