@@ -5,6 +5,7 @@ from os import environ
 class Env(BaseModel):
     OPENAI_API_KEY: str
     OPENAI_ORG_ID: str
+    PYANNOTE_AUTH_TOKEN: str
 
     @classmethod
     def from_environ(cls, environ):
